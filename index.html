@@ -29,6 +29,17 @@
     <transition>
       <p v-if='show2'>Hello Vue.js!</p>
     </transition>
+
+    <p>Hello {{ message2.value }}</p>
+    <p>{{ message2.value .length }}</p>
+    <p>{{ list[2] }}</p>
+    <p>{{ list[num] }}</p>
+
+    ▼v-bind:valueは省略できる
+    <p>value記述方法「v-bind:value='message2.value'」</p>
+    <div><input type="text" v-bind:value='message2.value'></div>
+    <p>value記述方法「:value='message2.value'」</p>
+    <div><input type="text" :value='message2.value'></div>
   </div>
   <script src='https://cdn.jsdelivr.net/npm/vue@2.5.13'></script>
   <script src='main.js'></script>
