@@ -1,23 +1,36 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang='ja'>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Vue</title>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Vue.js App</title>
+  <link rel='stylesheet' href='main.css'>
 </head>
 <body>
-  <div id="app">
-    <h1>{{ message }}</h1>
+  <div id='app'>
+    <p>▼inputに入力されたものをバインディング</p>
+    <p>{{ message }}</p>
+    <input type='text' v-model='message'>
+
+    <p>▼v-forディレクティブを使ったリストの表示</p>
+    <ul>
+      <li v-for='item in list'>{{ item }}</li>
+    </ul>
+
+    <p>▼v-onディレクティブを利用したクリックイベント</p>
+    <button v-on:click='handleClick'>Click</button>
+
+    <p>▼v-ifディレクティブを利用したDOMの表示と非表示</p>
+    <p v-if='show'>Hello Vue.js!</p>
+
+    <p>▼トランジション&アニメーション</p>
+    <button v-on:click='show2=!show2'>切り替え</button>
+    <transition>
+      <p v-if='show2'>Hello Vue.js!</p>
+    </transition>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13"></script>
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello Vue.js!'
-      }
-    })
-  </script>
+  <script src='https://cdn.jsdelivr.net/npm/vue@2.5.13'></script>
+  <script src='main.js'></script>
 </body>
 </html>
