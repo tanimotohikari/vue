@@ -40,6 +40,16 @@
     <div><input type="text" v-bind:value='message2.value'></div>
     <p>value記述方法「:value='message2.value'」</p>
     <div><input type="text" :value='message2.value'></div>
+
+    <div v-bind:text-content.prop='message3.value'></div>
+    <div v-bind:scroll-top.prop='scroll'></div>
+
+    <p>▼JSON形式でdataの中身を表示させる</p>
+    <div>{{ $data }}</div>
+
+    <p>▼クリックしたカウントを増やす</p>
+    <p>{{ count }}回クリックしたよ！</p>
+    <button v-on:click='increment'>カウントを増やす</button>
   </div>
   <script src='https://cdn.jsdelivr.net/npm/vue@2.5.13'></script>
   <script src='main.js'></script>

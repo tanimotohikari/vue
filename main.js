@@ -21,17 +21,28 @@ var app = new Vue({
     */
     state: state,
     message2: {
-      value: 'Vue.js!',
+      value: 'Vue.js!'
     },
-    num: 1
+    num: 1,
+    message3: {
+      value: 'Vue.js! 3',
+      scroll: 0
+    },
+    count: 0
   },
   created: function() {
     // このインスタンスの作成&初期化が終わったらすぐ実行
-    console.log('created');
+    //console.log('created');
+  },
+  mounted: function() {
+    this.scroll = 100
   },
   methods: {
     handleClick: function(event) {
       alert(event.target);
+    },
+    increment: function() {
+      this.count += 1
     }
   }
 })
