@@ -8,7 +8,7 @@
   <link rel='stylesheet' href='main.css'>
 </head>
 <body>
-  <div id='app'>
+  <div id='app' v-cloak>
     <p>▼inputに入力されたものをバインディング</p>
     <p>{{ message }}</p>
     <input type='text' v-model='message'>
@@ -80,12 +80,18 @@
 
     <p>リストデータの表示と更新</p>
     <ul>
-      <li v-for='item in monsterList' v-bind:key='item.id'>
-        {{ item.name}}：{{ item.hp }}
+      <li v-for='(item, index) in monsterList' v-bind:key='item.id'>
+        {{ item.name}} HP：{{ item.hp }}
+        <span v-if='item.hp === 0'>死亡</span>
+        <button v-if='item.hp !== 0' v-on:click='attackMonster(index)'>攻撃する</button>
+        <button v-on:click='removeMonster(index)'>モンスターを削除</button>
       </li>
     </ul>
 
-    <input v-model='name'>
+    <p>▼新しいモンスターを追加</p>
+    <input v-model='name' type='text' placeholder='名前を入力'>
+    <input v-model='hp' type='text' placeholder='HPを入力'>
+    <p>{{ this.name }}</p>
     <button v-on:click='addMonster'>モンスターを追加</button>
   </div>
   <script src='https://cdn.jsdelivr.net/npm/vue@2.5.13'></script>
