@@ -28,7 +28,44 @@ var app = new Vue({
       value: 'Vue.js! 3',
       scroll: 0
     },
-    count: 0
+    /*
+      classとスタイルのデータバインディング
+    */
+    count: 0,
+    isChild: true,
+    isActive: true,
+    textColor: 'red',
+    bgColor: 'lightgray',
+    /*
+      オブジェクトデータを渡す
+    */
+    classObject: {
+      child: true,
+      'is-active': false
+    },
+    styleObject: {
+      color: 'red',
+      backgroundColor: 'lightgray'
+    },
+    item: {
+      id: 1,
+      class: 'hoge',
+      width: 200,
+      height: 50
+    },
+    /*
+      複数の要素を同時に切り替えたい時
+    */
+    ok: false,
+    /*
+      リストデータの表示と更新
+    */
+    name: 'キマイラ',
+    monsterList: [
+      { id: 1, name: 'スライム', hp: 10 },
+      { id: 2, name: 'ドブリン', hp: 30 },
+      { id: 3, name: 'ミニドラゴン', hp: 40 },
+    ],
   },
   created: function() {
     // このインスタンスの作成&初期化が終わったらすぐ実行
@@ -43,6 +80,28 @@ var app = new Vue({
     },
     increment: function() {
       this.count += 1
+    },
+    /*
+      v-if templateの非表示
+    */
+    chnageStatus: function() {
+      this.ok = !this.ok;
+    },
+    /*
+      リストに新規項目を追加する
+    */
+    addMonster: function() {
+      // リスト内で一番大きなidの取得
+      var maxId = this.monsterList.reduce(function(a, b) {
+        return a.id > b.id ? a.id : b.id
+      }, 0)
+      //
+      // // 新しいモンスターをリストに追加
+      this.monsterList.push({
+        id: maxId + 1,
+        name: this.name,
+        hp: 500
+      })
     }
   }
 })

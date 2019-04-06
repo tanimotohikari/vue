@@ -50,6 +50,43 @@
     <p>▼クリックしたカウントを増やす</p>
     <p>{{ count }}回クリックしたよ！</p>
     <button v-on:click='increment'>カウントを増やす</button>
+
+    <p>クラスとスタイルのデータバインディング</p>
+    <p v-bind:class='{ child: isChild, "is-active": isActive }'>text</p>
+    <p v-bind:style='{ color: textColor, backgroundColor: bgColor }'>text</p>
+
+    <p>オブジェクトデータを渡す</p>
+    <p v-bind:class='classObject'>text</p>
+    <p v-bind:style='styleObject'>text</p>
+
+    <p>大量のプロパティを属性にバインドするとき</p>
+    <p>悪い例</p>
+    <p v-bind:id='item.id'
+       v-bind:class='item.class'
+       v-bind:width='item.width'
+       v-bind:height='item.height'
+    >
+      text
+    </p>
+    <p>良い例</p>
+    <p v-bind='item' v-bind:id='item.id' v-bind:class='item.class'>text</p>
+
+    <p>複数の要素を同時に切り替えたい時はtemplateタグを使う</p>
+    <button v-on:click='chnageStatus'>show template</button>
+    <template v-if='ok'>
+      <p>text</p>
+      <p>text2</p>
+    </template>
+
+    <p>リストデータの表示と更新</p>
+    <ul>
+      <li v-for='item in monsterList' v-bind:key='item.id'>
+        {{ item.name}}：{{ item.hp }}
+      </li>
+    </ul>
+
+    <input v-model='name'>
+    <button v-on:click='addMonster'>モンスターを追加</button>
   </div>
   <script src='https://cdn.jsdelivr.net/npm/vue@2.5.13'></script>
   <script src='main.js'></script>
