@@ -60,7 +60,8 @@ var app = new Vue({
     /*
       リストデータの表示と更新
     */
-    name: 'キマイラ',
+    name: '',
+    hp: '',
     monsterList: [
       { id: 1, name: 'スライム', hp: 10 },
       { id: 2, name: 'ドブリン', hp: 30 },
@@ -100,8 +101,20 @@ var app = new Vue({
       this.monsterList.push({
         id: maxId + 1,
         name: this.name,
-        hp: 500
+        hp: this.hp
       })
+    },
+    /*
+      リストから削除する
+    */
+    removeMonster: function(index) {
+      this.monsterList.splice(index, 1)
+    },
+    /*
+      モンスターを攻撃する
+    */
+    attackMonster: function(index) {
+      this.monsterList[index].hp -= 10
     }
   }
 })
