@@ -64,7 +64,7 @@ var app = new Vue({
     hp: '',
     monsterList: [
       { id: 1, name: 'スライム', hp: 10 },
-      { id: 2, name: 'ドブリン', hp: 30 },
+      { id: 2, name: 'ゴブリン', hp: 30 },
       { id: 3, name: 'ミニドラゴン', hp: 40 },
     ],
   },
